@@ -1,0 +1,6 @@
+TASK_ID,Task Name,Task Description,Task Status,Task Priority,Task Dependencies
+T01-01,Create Core,Create app/core with config, db, security modules,DONE,High,
+T01-02,API Router,Add app/api/router.py aggregator and wire in main.py,DONE,High,T01-01
+T01-03,Users Module,Add users module with model, schemas, service, router,DONE,High,T01-01
+T01-04,Auth Module,Add auth module with router, schemas, dependencies,IN PROGRESS,High,T01-01
+T01-05,Cleanup,Remove example routers and dependencies file,DONE,Medium,

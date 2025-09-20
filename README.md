@@ -1,17 +1,51 @@
-# uv-fastapi-example
+# Project Medicare
 
-An example of a [FastAPI](https://github.com/fastapi/fastapi) application managed as a
-[uv](https://github.com/astral-sh/uv) project.
+This project is the backend service for Project Medicare, built using FastAPI and managed with uv. It provides a robust API for managing healthcare data and integrates with a PostgreSQL database.
 
-Based on the [multi-file example](https://fastapi.tiangolo.com/tutorial/bigger-applications/) from
-the FastAPI documentation.
+## Development
 
-## License
+### Prerequisites
 
-MIT
+- astral uv
+- Python 3.12+
+- docker & docker-compose (for local development with PostgreSQL)
 
-<div align="center">
-  <a target="_blank" href="https://astral.sh" style="background:none">
-    <img src="https://raw.githubusercontent.com/astral-sh/uv/main/assets/svg/Astral.svg" alt="Made by Astral">
-  </a>
-</div>
+### Setup
+
+1. Install dependencies:
+
+   ```bash
+   uv sync
+   ```
+
+2. Run the Docker containers:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Run the development server:
+
+   ```bash
+   uv run fastapi dev app/main.py --port 8000
+
+   ```
+
+4. Environment variables (dev defaults shown):
+
+   - DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/project_medicare
+   - JWT_SECRET_KEY=change-me
+   - JWT_ALGORITHM=HS256
+   - ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+## API
+
+- Auth:
+  - POST /api/auth/register
+  - POST /api/auth/login
+- Users:
+  - GET /api/users/
+  - GET /api/users/me (requires Bearer token)
+  ```
+
+  ```

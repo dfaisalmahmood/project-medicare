@@ -1,0 +1,5 @@
+TASK_ID,Task Name,Task Description,Task Status,Task Priority,Task Dependencies
+T04-01,Auth Schemas,Create token/login/register DTOs,DONE,High,
+T04-02,Auth Router,Implement register/login endpoints,IN PROGRESS,High,T04-01
+T04-03,Auth Dependency,Implement get_current_user dependency,DONE,High,T04-01
+T04-04,Protect Routes,Use dependency in users/me,DONE,Medium,T04-03

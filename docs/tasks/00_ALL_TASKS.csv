@@ -1,0 +1,5 @@
+TASK_ID,Task Name,Task Description,Task Status,Task Priority,Task Dependencies
+T01,Modularize App,Restructure FastAPI into NestJS-style modules with core/api wiring,DONE,High,
+T02,Docker Compose,Add docker-compose with PostgreSQL and Redis services,DONE,High,
+T03,Postgres ORM,Integrate PostgreSQL via SQLAlchemy with User model and session,DONE,High,
+T04,Auth Routes,Add register/login JWT auth endpoints and dependencies,DONE,High,

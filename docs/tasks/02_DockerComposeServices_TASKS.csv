@@ -1,0 +1,3 @@
+TASK_ID,Task Name,Task Description,Task Status,Task Priority,Task Dependencies
+T02-01,Postgres Service,Add postgres service with volume and healthcheck,DONE,High,
+T02-02,Redis Service,Add redis service and healthcheck,DONE,Medium,

@@ -1,0 +1,23 @@
+from pydantic import BaseModel
+import os
+
+
+class Settings(BaseModel):
+    app_name: str = "Project Medicare"
+    debug: bool = os.getenv("DEBUG", "false").lower() == "true"
+
+    # Database
+    database_url: str = os.getenv(
+        "DATABASE_URL",
+        "postgresql+psycopg://postgres:postgres@localhost:5432/project_medicare",
+    )
+
+    # Security
+    jwt_secret_key: str = os.getenv("JWT_SECRET_KEY", "change-me")
+    jwt_algorithm: str = os.getenv("JWT_ALGORITHM", "HS256")
+    access_token_expire_minutes: int = int(
+        os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60")
+    )
+
+
+settings = Settings()
