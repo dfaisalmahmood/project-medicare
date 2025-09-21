@@ -9,7 +9,7 @@ class Settings(BaseModel):
     # Database
     database_url: str = os.getenv(
         "DATABASE_URL",
-        "postgresql+psycopg://postgres:postgres@localhost:5432/project_medicare",
+        "postgresql+psycopg://postgres:postgres@localhost:5451/project_medicare",
     )
 
     # Security

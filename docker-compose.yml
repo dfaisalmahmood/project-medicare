@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: project_medicare
     ports:
-      - "5432:5432"
+      - "5451:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -36,8 +36,10 @@ services:
       JWT_SECRET_KEY: change-me
       JWT_ALGORITHM: HS256
       ACCESS_TOKEN_EXPIRE_MINUTES: 60
+      WATCHFILES_FORCE_POLLING: "1"
     volumes:
-      - ./app:/app/app
+      - .:/app
+      - venv:/app/.venv
     command:
       [
         "/app/.venv/bin/fastapi",
@@ -58,4 +60,6 @@ services:
 
 volumes:
   pgdata:
+    driver: local
+  venv:
     driver: local

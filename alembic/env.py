@@ -1,4 +1,6 @@
 import os
+import sys
+from pathlib import Path
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config, pool
@@ -15,9 +17,14 @@ if config.config_file_name is not None:
 # Set SQLAlchemy URL from env or fall back
 database_url = os.getenv(
     "DATABASE_URL",
-    "postgresql+psycopg://postgres:postgres@localhost:5432/project_medicare",
+    "postgresql+psycopg://postgres:postgres@localhost:5451/project_medicare",
 )
 config.set_main_option("sqlalchemy.url", database_url)
+
+# Make sure project root is on sys.path for 'import app'
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import target metadata from the app
 from app.core.db import Base  # noqa: E402
