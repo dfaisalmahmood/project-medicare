@@ -1,7 +1,8 @@
 from typing import List
 
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.db import get_db
 from app.modules.auth.dependencies import get_current_user
@@ -13,9 +14,10 @@ router = APIRouter()
 
 
 @router.get("/", response_model=List[UserRead])
-def list_users(db: Session = Depends(get_db)):
+async def list_users(db: AsyncSession = Depends(get_db)):
     # Simple list endpoint for demo; in real usage, add pagination
-    return db.query(User).all()
+    results = await db.execute(select(User))
+    return results.scalars().all()
 
 
 @router.get("/me", response_model=UserRead)

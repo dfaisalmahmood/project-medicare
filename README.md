@@ -33,7 +33,7 @@ This project is the backend service for Project Medicare, built using FastAPI an
 
 4. Environment variables (dev defaults shown):
 
-   - DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5451/project_medicare
+   - DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5451/project_medicare
    - JWT_SECRET_KEY=change-me
    - JWT_ALGORITHM=HS256
    - ACCESS_TOKEN_EXPIRE_MINUTES=60

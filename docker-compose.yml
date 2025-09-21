@@ -32,7 +32,7 @@ services:
     build: .
     container_name: project-medicare-app
     environment:
-      DATABASE_URL: postgresql+psycopg://postgres:postgres@postgres:5432/project_medicare
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/project_medicare
       JWT_SECRET_KEY: change-me
       JWT_ALGORITHM: HS256
       ACCESS_TOKEN_EXPIRE_MINUTES: 60

@@ -1,15 +1,17 @@
-from sqlalchemy.orm import Session
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.security import get_password_hash, verify_password
 from . import models
 
 
-def get_user_by_email(db: Session, email: str) -> models.User | None:
-    return db.query(models.User).filter(models.User.email == email).first()
+async def get_user_by_email(db: AsyncSession, email: str) -> models.User | None:
+    results = await db.execute(select(models.User).filter(models.User.email == email))
+    return results.scalars().first()
 
 
-def create_user(
-    db: Session, email: str, password: str, full_name: str | None = None
+async def create_user(
+    db: AsyncSession, email: str, password: str, full_name: str | None = None
 ) -> models.User:
     user = models.User(
         email=email,
@@ -17,13 +19,15 @@ def create_user(
         full_name=full_name,
     )
     db.add(user)
-    db.commit()
-    db.refresh(user)
+    await db.commit()
+    await db.refresh(user)
     return user
 
 
-def authenticate_user(db: Session, email: str, password: str) -> models.User | None:
-    user = get_user_by_email(db, email)
+async def authenticate_user(
+    db: AsyncSession, email: str, password: str
+) -> models.User | None:
+    user = await get_user_by_email(db, email)
     if not user:
         return None
     if not verify_password(password, user.hashed_password):
