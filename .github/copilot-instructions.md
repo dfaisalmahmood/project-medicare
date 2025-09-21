@@ -11,6 +11,9 @@ GENERAL GUIDELINES:
 5. Use comments in code to explain complex logic or important sections.
 6. Always use extensive error handling and logging.
 7. Always read the code carefully before making changes. Understand the existing logic and structure, and preserve existing conventions and practices.
+8. You are being run from project root directory. All paths are relative to project root.
+9. Scripts are prepared for convenience (check package.json in the root directory). Use them when possible. Also assumme `docker:env` script is always running in the background.
+10. Always use conventional commit messages when committing code.
 
 TASK MANAGEMENT:
 
@@ -32,6 +35,7 @@ TASK MANAGEMENT:
 
 TECH STACK:
 
+- pnpm workspace (monorepo management)
 - Python 3.12+
 - FastAPI (web framework)
 - uv (package/project manager for Python)

@@ -1,0 +1,22 @@
+{
+  "name": "project-medicare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "chmod +x scripts/post-install-script.sh && ./scripts/post-install-script.sh",
+    "docker:all": "docker-compose -f docker/docker-compose-env.dev.yml -f docker/docker-compose-all.dev.yml up --build",
+    "docker:env": "docker-compose -f docker/docker-compose-env.dev.yml up --build",
+    "dev": "run-p dev:*",
+    "dev:backend": "cd apps/backend && uv run fastapi dev --reload --host 0.0.0.0 --port 8000",
+    "uv:run": "cd apps/backend && uv run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.1",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

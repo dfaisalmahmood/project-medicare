@@ -1,6 +1,5 @@
 ---
-description: "This document provides an overview of the project's folder hierarchy. Individual files are omitted; each folder is described by the types of files it contains."
-applyTo: "**"
+description: "This document provides an overview of the backend app's folder hierarchy. Individual files are omitted; each folder is described by the types of files it contains."
 ---
 
 # Project Structure
@@ -8,7 +7,7 @@ applyTo: "**"
 This backend is organized in NestJS-style modules for easy future extraction into microservices.
 
 ```text
-project-root/
+project-root/apps/backend/
 ├── app/
 │   ├── api/
 │   │   [aggregate API router(s) that include module routers]

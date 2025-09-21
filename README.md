@@ -1,53 +1,39 @@
 # Project Medicare
 
-This project is the backend service for Project Medicare, built using FastAPI and managed with uv. It provides a robust API for managing healthcare data and integrates with a PostgreSQL database.
+This is the monorepo for Project Medicare, which includes both the backend and frontend applications, alongside any libs and scripts shared between them.
+
+## Apps
+
+- **Backend**: Located in `apps/backend`, this is the FastAPI backend service.
+- **Frontend**: Located in `apps/web`, this is the React/NextJS frontend application (coming soon).
 
 ## Development
 
 ### Prerequisites
 
+- Node.js (v22+ recommended)
+- pnpm (v10+ recommended)
 - astral uv
-- Python 3.12+
-- docker & docker-compose (for local development with PostgreSQL)
+- Docker & Docker Compose (for local development with PostgreSQL)
 
 ### Setup
 
 1. Install dependencies:
 
    ```bash
-   uv sync
+   pnpm install
    ```
 
-2. Run the Docker containers:
+   This will automatically run the post-install script to set up backend virtual environment and install Python dependencies.
+
+2. Start the Docker containers (PostgreSQL, Redis, etc):
 
    ```bash
-   docker-compose up -d
+   pnpm docker:env
    ```
 
-3. Run the development server:
+3. Start the development servers:
 
    ```bash
-   uv run fastapi dev app/main.py --port 8000
-
+   pnpm dev
    ```
-
-4. Environment variables (dev defaults shown):
-
-   - DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5451/project_medicare
-   - JWT_SECRET_KEY=change-me
-   - JWT_ALGORITHM=HS256
-   - ACCESS_TOKEN_EXPIRE_MINUTES=60
-
-## API
-
-- Auth:
-  - POST /api/auth/register
-  - POST /api/auth/login
-- Users:
-
-  - GET /api/users/
-  - GET /api/users/me (requires Bearer token)
-
-  ```
-
-  ```
