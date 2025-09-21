@@ -14,6 +14,7 @@ GENERAL GUIDELINES:
 8. You are being run from project root directory. All paths are relative to project root.
 9. Scripts are prepared for convenience (check package.json in the root directory). Use them when possible. Also assumme `docker:env` script is always running in the background.
 10. Always use conventional commit messages when committing code.
+11. Whenever new features are added, ensure to update the documentation accordingly (`docs/features.md`). For major features, add a section under "Major Features" and list out the key functionalities in details. For minor features, add them under "Minor Features" in the same way. You don't need to go into too much detail for minor features, just a brief description will suffice.
 
 TASK MANAGEMENT:
 
