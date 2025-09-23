@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Backend quick import check",
+			"type": "shell",
+			"command": "cd apps/backend && uv run python -c \"import app.main, app.modules.users.models, app.modules.patients.models; print('OK')\"",
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

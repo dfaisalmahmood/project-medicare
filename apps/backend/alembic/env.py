@@ -1,10 +1,10 @@
 import os
 from pathlib import Path
 import sys
-import alembic_postgresql_enum
 import asyncio
-from logging.config import fileConfig
+import alembic_postgresql_enum
 
+from logging.config import fileConfig
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
@@ -33,13 +33,13 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import target metadata from the app
+from app.core.db import Base
 from app.modules.users import models as users_models
+from app.modules.patients import models as patient_models
 
-target_metadata = [users_models.Base.metadata]
+target_metadata = Base.metadata
 
-print(
-    f"Generating for models: {[model for metadata in target_metadata for model in metadata.tables.keys()]}"
-)
+print(f"Generating for models: {[model for model in Base.metadata.tables.keys()]}")
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

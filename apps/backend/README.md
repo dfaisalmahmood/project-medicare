@@ -1,3 +1,23 @@
+# Backend
+
+FastAPI app with modular structure. Key modules:
+
+- Auth: JWT login/register
+- Users: Admin CRUD
+- Patients: Per-user profiles and health-record identity
+
+Run dev server:
+
+```
+uv run fastapi dev --reload --host 0.0.0.0 --port 8000
+```
+
+Seed superadmin:
+
+```
+uv run python -m app.seed_superadmin
+```
+
 # Project Medicare Backend
 
 This project is the backend service for Project Medicare, built using FastAPI and managed with uv. It provides a robust API for managing healthcare data and integrates with a PostgreSQL database.
