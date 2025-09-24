@@ -14,4 +14,5 @@ dependencies = [
     "tzdata>=2025.2",
     "argon2-cffi>=25.1.0",
     "passlib>=1.7.4",
+    "pyjwt[crypto]>=2.10.1",
 ]

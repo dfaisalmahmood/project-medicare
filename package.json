@@ -6,7 +6,7 @@
   "scripts": {
     "install": "chmod +x scripts/post-install-script.sh && ./scripts/post-install-script.sh",
     "docker:all": "docker-compose -f docker/docker-compose-env.dev.yml -f docker/docker-compose-all.dev.yml up --build",
-    "docker:env": "docker-compose -f docker/docker-compose-env.dev.yml up --build",
+    "docker:env": "docker-compose -f docker/docker-compose-env.dev.yml up",
     "dev": "run-p dev:*",
     "dev:backend": "cd apps/backend && PYTHONPATH=$(pwd) uv run fastapi dev --reload --host 0.0.0.0 --port 8000",
     "uv:run": "cd apps/backend && PYTHONPATH=$(pwd) uv run",
